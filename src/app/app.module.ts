@@ -27,8 +27,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DomoviComponent } from './components/domovi/domovi.component';
 import { DomoviService } from './services/domovi.service';
-
-//import { ObrazovanjeDialogComponent } from './components/dialogs/obrazovanje-component/obrazovanje-dialog.component';
+import { DomoviDialogComponent } from './components/dialogs/domovi-component/domovi-dialog/domovi-dialog.component';
 
 const Routes = [
   { 
@@ -45,6 +44,7 @@ const Routes = [
   declarations: [
     AppComponent,
     DomoviComponent,
+    DomoviDialogComponent,
   ],
   imports: [
     BrowserModule,

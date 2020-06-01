@@ -3,10 +3,12 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Domovi } from '../models/domovi';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DomoviService {
 
- private readonly API_URL = 'http://localhost:8086/api/domovi';
+ readonly API_URL = 'http://localhost:8086/api/domovi';
 
  dataChange: BehaviorSubject<Domovi[]> = new BehaviorSubject<Domovi[]>([]);
  constructor(private httpClient: HttpClient) { }
@@ -21,17 +23,16 @@ export class DomoviService {
    return this.dataChange.asObservable();
  }
 
+  public addDomovi(domovi: Domovi): void {
+    this.httpClient.post(this.API_URL, domovi).subscribe();
+  }
 
-public addDomovi(domovi: Domovi): void {
-  this.httpClient.post(this.API_URL, domovi).subscribe();
+  public updateDomovi(domovi: Domovi): void {
+    this.httpClient.put(this.API_URL + '/' + domovi.DomID, domovi).subscribe();
+  }
+
+  public deleteDomovi(DomID: number): void {
+    console.log(this.API_URL + '/' + DomID);
+    this.httpClient.delete(this.API_URL + '/' + DomID).subscribe();
 }
-
-/*public updateObrazovanje(obrazovanje: Obrazovanje): void {
-  this.httpClient.put(this.API_URL, obrazovanje).subscribe();
-}
-
-public deleteObrazovanje(id: number): void {
-  console.log(this.API_URL + id);
-  this.httpClient.delete(this.API_URL + id).subscribe();
-}*/
 }

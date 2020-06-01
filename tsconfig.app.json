@@ -2,8 +2,13 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [],
+    "experimentalDecorators": true
   },
+  "angularCompilerOptions": {  
+    "fullTemplateTypeCheck": true,
+    "preserveWhitespaces": true
+  },  
   "files": [
     "src/main.ts",
     "src/polyfills.ts"

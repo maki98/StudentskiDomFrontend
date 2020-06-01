@@ -8,25 +8,43 @@
     </mat-form-field>
     <mat-table [dataSource]="dataSource" matSort class="mat-cell">
       <ng-container matColumnDef="DomID">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>DomID</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
         <mat-cell *matCellDef="let row" >{{row.DomID}}</mat-cell>
       </ng-container>
   
       <ng-container matColumnDef="NazivDom">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>NazivDom</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Naziv doma</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.NazivDom}}</mat-cell>
       </ng-container>
   
       <ng-container matColumnDef="TelefonDom">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>TelefonDom</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Telefon doma</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.TelefonDom}}</mat-cell>
       </ng-container>
   
       <ng-container matColumnDef="AdresaDom">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>AdresaDom</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Adresa doma</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.AdresaDom}}</mat-cell>
       </ng-container>
   
+       <!-- actions -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button color="primary" (click)="openDialog(1)">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let row; let i=index;">
+        <button mat-icon-button color="primary" (click)="openDialog(2, row.DomID, row.NazivDom, row.TelefonDom, row.AdresaDom)">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" (click)="openDialog(3, row.DomID, row.NazivDom, row.TelefonDom, row.AdresaDom)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+      </ng-container>
+
   
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row style="cursor: default" *matRowDef="let row; columns: displayedColumns;"></mat-row>
