@@ -37,12 +37,18 @@ import { FakultetiDialogComponent } from './components/dialogs/fakulteti-dialog/
 import { TipoviSobeComponent } from './components/tipovi-sobe/tipovi-sobe.component';
 import { TipoviSobeService } from './services/tipovi-sobe.service';
 import { TipoviSobeDialogComponent } from './components/dialogs/tipovi-sobe-dialog/tipovi-sobe-dialog.component';
+import { UlogeComponent } from './components/uloge/uloge.component';
+import { UlogeDialogComponent } from './components/dialogs/uloge-dialog/uloge-dialog.component';
+import { UlogeService } from './services/uloge.service';
 
 const Routes = [
   { 
     path: '',
     redirectTo: 'domovi',
     pathMatch: 'full'
+  },
+  {
+    path: 'uloge', component: UlogeComponent
   },
   {
     path: 'domovi', component: DomoviComponent
@@ -68,7 +74,9 @@ const Routes = [
     FakultetiComponent,
     FakultetiDialogComponent,
     TipoviSobeComponent,
-    TipoviSobeDialogComponent
+    TipoviSobeDialogComponent,
+    UlogeComponent,
+    UlogeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -102,7 +110,7 @@ const Routes = [
   { provide: MAT_DIALOG_DATA,
     useValue: {}
   },
-  DomoviService, AkademskeGodineService, FakultetiService, TipoviSobeService],
+  DomoviService, AkademskeGodineService, FakultetiService, TipoviSobeService, UlogeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
