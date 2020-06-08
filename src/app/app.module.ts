@@ -34,6 +34,9 @@ import { AkademskeGodineService } from './services/akademske-godine.service';
 import { FakultetiComponent } from './components/fakulteti/fakulteti.component';
 import { FakultetiService } from './services/fakulteti.service';
 import { FakultetiDialogComponent } from './components/dialogs/fakulteti-dialog/fakulteti-dialog.component';
+import { TipoviSobeComponent } from './components/tipovi-sobe/tipovi-sobe.component';
+import { TipoviSobeService } from './services/tipovi-sobe.service';
+import { TipoviSobeDialogComponent } from './components/dialogs/tipovi-sobe-dialog/tipovi-sobe-dialog.component';
 
 const Routes = [
   { 
@@ -45,10 +48,13 @@ const Routes = [
     path: 'domovi', component: DomoviComponent
   },
   {
-    path: 'akademskeGodine', component: AkademskeGodineComponent
+    path: 'akademskegodine', component: AkademskeGodineComponent
   },
   {
     path: 'fakulteti', component: FakultetiComponent
+  },
+  {
+    path: 'tipovisobe', component: TipoviSobeComponent
   }
  ];
 
@@ -61,6 +67,8 @@ const Routes = [
     AkademskeGodineDialogComponent,
     FakultetiComponent,
     FakultetiDialogComponent,
+    TipoviSobeComponent,
+    TipoviSobeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -94,7 +102,7 @@ const Routes = [
   { provide: MAT_DIALOG_DATA,
     useValue: {}
   },
-  DomoviService, AkademskeGodineService, FakultetiService],
+  DomoviService, AkademskeGodineService, FakultetiService, TipoviSobeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
