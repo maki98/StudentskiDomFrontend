@@ -8,20 +8,21 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Domovi } from 'src/app/models/domovi';
-import { DomoviDialogComponent } from '../dialogs/domovi-dialog/domovi-dialog.component';
+import { AkademskeGodine } from 'src/app/models/akademske-godine';
+import { AkademskeGodineDialogComponent } from '../dialogs/akademske-godine-dialog/akademske-godine-dialog.component';
+import { AkademskeGodineService } from 'src/app/services/akademske-godine.service';
 
 @Component({
-  selector: 'app-domovi',
-  templateUrl: './domovi.component.html',
-  styleUrls: ['./domovi.component.css'],
+  selector: 'app-akademske-godine',
+  templateUrl: './akademske-godine.component.html',
+  styleUrls: ['./akademske-godine.component.css'],
 })
-export class DomoviComponent implements OnInit {
+export class AkademskeGodineComponent implements OnInit {
 
   public isMenuOpen: boolean = false;
 
-  displayedColumns = ['DomID', 'NazivDom', 'TelefonDom', 'AdresaDom', 'actions'];
-  dataSource: MatTableDataSource<Domovi>;
+  displayedColumns = ['AkademskaGodinaID', 'Godina', 'actions'];
+  dataSource: MatTableDataSource<AkademskeGodine>;
 
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -29,7 +30,7 @@ export class DomoviComponent implements OnInit {
   constructor(public httpClient: HttpClient, 
         public dialog: MatDialog, 
         public snackBar: MatSnackBar, 
-        public domoviService: DomoviService) {
+        public akademskeGodineService: AkademskeGodineService) {
   }
 
   ngOnInit() {
@@ -37,7 +38,7 @@ export class DomoviComponent implements OnInit {
   }
 
   public loadData() {
-    this.domoviService.getAllDomovi().subscribe(data=>{
+    this.akademskeGodineService.getAllAkademskeGodine().subscribe(data=>{
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sortingDataAccessor = (data, property) => {
         switch (property) {
@@ -51,9 +52,9 @@ export class DomoviComponent implements OnInit {
     });  
   }
 
-  public openDialog(flag: number, DomID: number, NazivDom: string, TelefonDom: string, AdresaDom: string) {
-    const dialogRef = this.dialog.open(DomoviDialogComponent,
-      { data: { DomID, NazivDom, TelefonDom, AdresaDom } });
+  public openDialog(flag: number, AkademskaGodinaID: number, Godina: string) {
+    const dialogRef = this.dialog.open(AkademskeGodineDialogComponent,
+      { data: { AkademskaGodinaID, Godina } });
       dialogRef.componentInstance.flag = flag;
       dialogRef.afterClosed().subscribe(result => {
         if (result == 1) {

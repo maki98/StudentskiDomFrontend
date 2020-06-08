@@ -19,7 +19,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 
@@ -27,7 +27,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS, HttpHeaderResponse, HttpResponseBase } from '@angular/common/http';
 import { DomoviComponent } from './components/domovi/domovi.component';
 import { DomoviService } from './services/domovi.service';
-import { DomoviDialogComponent } from './components/dialogs/domovi-component/domovi-dialog/domovi-dialog.component';
+import { DomoviDialogComponent } from './components/dialogs/domovi-dialog/domovi-dialog.component';
+import { AkademskeGodineComponent } from './components/akademske-godine/akademske-godine.component';
+import { AkademskeGodineDialogComponent } from './components/dialogs/akademske-godine-dialog/akademske-godine-dialog.component';
+import { AkademskeGodineService } from './services/akademske-godine.service';
 
 const Routes = [
   { 
@@ -37,6 +40,9 @@ const Routes = [
   },
   {
     path: 'domovi', component: DomoviComponent
+  },
+  {
+    path: 'akademskeGodine', component: AkademskeGodineComponent
   }
  ];
 
@@ -45,6 +51,8 @@ const Routes = [
     AppComponent,
     DomoviComponent,
     DomoviDialogComponent,
+    AkademskeGodineComponent,
+    AkademskeGodineDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,7 +79,14 @@ const Routes = [
   ],
   entryComponents: [
   ],
-  providers: [DomoviService],
+  providers: [{
+    provide: MatDialogRef,
+    useValue: {}
+  },
+  { provide: MAT_DIALOG_DATA,
+    useValue: {}
+  },
+  DomoviService, AkademskeGodineService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
