@@ -31,6 +31,9 @@ import { DomoviDialogComponent } from './components/dialogs/domovi-dialog/domovi
 import { AkademskeGodineComponent } from './components/akademske-godine/akademske-godine.component';
 import { AkademskeGodineDialogComponent } from './components/dialogs/akademske-godine-dialog/akademske-godine-dialog.component';
 import { AkademskeGodineService } from './services/akademske-godine.service';
+import { FakultetiComponent } from './components/fakulteti/fakulteti.component';
+import { FakultetiService } from './services/fakulteti.service';
+import { FakultetiDialogComponent } from './components/dialogs/fakulteti-dialog/fakulteti-dialog.component';
 
 const Routes = [
   { 
@@ -43,6 +46,9 @@ const Routes = [
   },
   {
     path: 'akademskeGodine', component: AkademskeGodineComponent
+  },
+  {
+    path: 'fakulteti', component: FakultetiComponent
   }
  ];
 
@@ -53,6 +59,8 @@ const Routes = [
     DomoviDialogComponent,
     AkademskeGodineComponent,
     AkademskeGodineDialogComponent,
+    FakultetiComponent,
+    FakultetiDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,7 +94,7 @@ const Routes = [
   { provide: MAT_DIALOG_DATA,
     useValue: {}
   },
-  DomoviService, AkademskeGodineService],
+  DomoviService, AkademskeGodineService, FakultetiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
