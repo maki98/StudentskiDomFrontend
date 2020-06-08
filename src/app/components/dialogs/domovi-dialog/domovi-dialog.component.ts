@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject, ContentChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Domovi } from '../../../../models/domovi';
-import { DomoviService } from '../../../../services/domovi.service';
+import { Domovi } from '../../../models/domovi';
+import { DomoviService } from '../../../services/domovi.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
