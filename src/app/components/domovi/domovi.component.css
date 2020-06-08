@@ -41,3 +41,7 @@
    .title-center {
     margin: 0 auto;
    }
+
+   .mat-elevation-z8 {
+    padding: 14px;
+   }

@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, throwError, of } from 'rxjs';
 import { Domovi } from '../models/domovi';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar'
+
+import { retry, catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +27,9 @@ export class DomoviService {
  }
 
   public addDomovi(domovi: Domovi): void {
-    this.httpClient.post(this.API_URL, domovi).subscribe();
+     this.httpClient.post(this.API_URL, domovi).subscribe();
   }
+
 
   public updateDomovi(domovi: Domovi): void {
     this.httpClient.put(this.API_URL + '/' + domovi.DomID, domovi).subscribe();
@@ -34,5 +38,5 @@ export class DomoviService {
   public deleteDomovi(DomID: number): void {
     console.log(this.API_URL + '/' + DomID);
     this.httpClient.delete(this.API_URL + '/' + DomID).subscribe();
-}
+7  }
 }

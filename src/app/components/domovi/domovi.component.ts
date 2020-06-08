@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Domovi } from 'src/app/models/domovi';
 import { DomoviDialogComponent } from '../dialogs/domovi-component/domovi-dialog/domovi-dialog.component';
 
@@ -17,12 +18,15 @@ import { DomoviDialogComponent } from '../dialogs/domovi-component/domovi-dialog
 })
 export class DomoviComponent implements OnInit {
 
+  public isMenuOpen: boolean = false;
+
+
   displayedColumns = ['DomID', 'NazivDom', 'TelefonDom', 'AdresaDom', 'actions'];
   dataSource: MatTableDataSource<Domovi>;
-  @ViewChild(MatPaginator, { read: true, static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { read: true, static: true }) sort: MatSort;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
-  constructor(public httpClient: HttpClient, public dialog: MatDialog, public domoviService: DomoviService) {
+  constructor(public httpClient: HttpClient, public dialog: MatDialog, public snackBar: MatSnackBar, public domoviService: DomoviService) {
   }
 
   ngOnInit() {
@@ -31,7 +35,7 @@ export class DomoviComponent implements OnInit {
 
   public loadData() {
     this.domoviService.getAllDomovi().subscribe(data=>{
-      this.dataSource =new MatTableDataSource(data);
+      this.dataSource = new MatTableDataSource(data);
       this.dataSource.sortingDataAccessor = (data, property) => {
         switch (property) {
           case 'id': return data[property];
@@ -41,7 +45,8 @@ export class DomoviComponent implements OnInit {
 
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-    });  }
+    });  
+}
 
     public openDialog(flag: number, DomID: number, NazivDom: string, TelefonDom: string, AdresaDom: string) {
       const dialogRef = this.dialog.open(DomoviDialogComponent,
@@ -50,10 +55,10 @@ export class DomoviComponent implements OnInit {
         });
       dialogRef.componentInstance.flag = flag;
       dialogRef.afterClosed().subscribe(result => {
-  //tslint:disable-next-line: triple-equals
         if (result == 1) {
           this.loadData();
-        }
+        } 
+        
       });
     }
 

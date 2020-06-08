@@ -24,7 +24,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpHeaderResponse, HttpResponseBase } from '@angular/common/http';
 import { DomoviComponent } from './components/domovi/domovi.component';
 import { DomoviService } from './services/domovi.service';
 import { DomoviDialogComponent } from './components/dialogs/domovi-component/domovi-dialog/domovi-dialog.component';
