@@ -25,9 +25,9 @@ export class DomoviService {
  }
 
   public addDomovi(domovi: Domovi): void {
-    this.httpClient.post(this.API_URL, domovi).subscribe({
+    this.httpClient.post<any>(this.API_URL, domovi).subscribe({
       next: data => {
-        this.snackBar.open("Uspešno dodat dom", "U redu", {
+        this.snackBar.open(data.message, "U redu", {
           duration: 2000,
         });
       },
@@ -40,9 +40,9 @@ export class DomoviService {
   }
 
   public updateDomovi(domovi: Domovi): void {
-    this.httpClient.put(this.API_URL + '/' + domovi.DomID, domovi).subscribe({
+    this.httpClient.put<any>(this.API_URL + '/' + domovi.DomID, domovi).subscribe({
       next: data => {
-        this.snackBar.open("Uspešno ažuriran dom", "U redu", {
+        this.snackBar.open(data.message, "U redu", {
           duration: 2000,
         });
       },
@@ -55,9 +55,9 @@ export class DomoviService {
   }
 
   public deleteDomovi(DomID: number): void {
-    this.httpClient.delete(this.API_URL + '/' + DomID).subscribe({
+    this.httpClient.delete<any>(this.API_URL + '/' + DomID).subscribe({
       next: data => {
-        this.snackBar.open("Uspešno obrisan dom", "U redu", {
+        this.snackBar.open(data.message, "U redu", {
           duration: 2000,
         });
       },
