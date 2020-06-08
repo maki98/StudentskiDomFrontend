@@ -20,13 +20,16 @@ export class DomoviComponent implements OnInit {
 
   public isMenuOpen: boolean = false;
 
-
   displayedColumns = ['DomID', 'NazivDom', 'TelefonDom', 'AdresaDom', 'actions'];
   dataSource: MatTableDataSource<Domovi>;
+
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
-  constructor(public httpClient: HttpClient, public dialog: MatDialog, public snackBar: MatSnackBar, public domoviService: DomoviService) {
+  constructor(public httpClient: HttpClient, 
+        public dialog: MatDialog, 
+        public snackBar: MatSnackBar, 
+        public domoviService: DomoviService) {
   }
 
   ngOnInit() {
@@ -46,23 +49,21 @@ export class DomoviComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });  
-}
+  }
 
-    public openDialog(flag: number, DomID: number, NazivDom: string, TelefonDom: string, AdresaDom: string) {
-      const dialogRef = this.dialog.open(DomoviDialogComponent,
-        {
-          data: { DomID, NazivDom, TelefonDom, AdresaDom }
-        });
+  public openDialog(flag: number, DomID: number, NazivDom: string, TelefonDom: string, AdresaDom: string) {
+    const dialogRef = this.dialog.open(DomoviDialogComponent,
+      { data: { DomID, NazivDom, TelefonDom, AdresaDom } });
       dialogRef.componentInstance.flag = flag;
       dialogRef.afterClosed().subscribe(result => {
         if (result == 1) {
           this.loadData();
         } 
-        
       });
-    }
+  }
 
   applyFilter(filterValue: string){
+    filterValue = filterValue.toString();
     filterValue = filterValue.trim();
     filterValue = filterValue.toLocaleLowerCase();
     this.dataSource.filter = filterValue;

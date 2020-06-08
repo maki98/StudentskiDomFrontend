@@ -12,6 +12,7 @@ import { catchError } from 'rxjs/operators';
   templateUrl: './domovi-dialog.component.html',
   styleUrls: ['./domovi-dialog.component.css']
 })
+
 export class DomoviDialogComponent implements OnInit {
 
   public flag: number;
@@ -28,23 +29,14 @@ export class DomoviDialogComponent implements OnInit {
   public add(): void {
     this.data.DomID = -1;
     this.domoviService.addDomovi(this.data);
-    this.snackBar.open("Uspešno dodat dom: " + this.data.NazivDom, "U redu", {
-      duration: 2000,
-    });
   }
 
   public update(): void {
     this.domoviService.updateDomovi(this.data);
-    this.snackBar.open("Uspešno modifikovan dom: " + this.data.NazivDom, "U redu", {
-      duration: 2000,
-    });
   }
 
   public delete(): void {
     this.domoviService.deleteDomovi(this.data.DomID);
-    this.snackBar.open("Uspešno obrisan dom: " + this.data.DomID, "U redu", {
-      duration: 2000,
-    });
   }
 
   public cancel(): void {
