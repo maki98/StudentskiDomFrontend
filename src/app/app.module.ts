@@ -24,6 +24,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms' 
 import { HttpClientModule, HTTP_INTERCEPTORS, HttpHeaderResponse, HttpResponseBase } from '@angular/common/http';
 import { DomoviComponent } from './components/domovi/domovi.component';
 import { DomoviService } from './services/domovi.service';
@@ -40,6 +41,9 @@ import { TipoviSobeDialogComponent } from './components/dialogs/tipovi-sobe-dial
 import { UlogeComponent } from './components/uloge/uloge.component';
 import { UlogeDialogComponent } from './components/dialogs/uloge-dialog/uloge-dialog.component';
 import { UlogeService } from './services/uloge.service';
+import { KorisniciComponent } from './components/korisnici/korisnici.component';
+import { KorisniciService } from './services/korisnici.service';
+import { KorisniciDialogComponent } from './components/dialogs/korisnici-dialog/korisnici-dialog.component';
 
 const Routes = [
   { 
@@ -61,7 +65,10 @@ const Routes = [
   },
   {
     path: 'tipovisobe', component: TipoviSobeComponent
-  }
+  },
+  {
+    path: 'korisnici', component: KorisniciComponent
+  },
  ];
 
 @NgModule({
@@ -76,7 +83,9 @@ const Routes = [
     TipoviSobeComponent,
     TipoviSobeDialogComponent,
     UlogeComponent,
-    UlogeDialogComponent
+    UlogeDialogComponent,
+    KorisniciComponent,
+    KorisniciDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -99,8 +108,9 @@ const Routes = [
     MatSnackBarModule,
     MatDialogModule,
     MatInputModule,
-    FormsModule
-  ],
+    FormsModule,
+    ReactiveFormsModule
+    ],
   entryComponents: [
   ],
   providers: [{
@@ -110,7 +120,7 @@ const Routes = [
   { provide: MAT_DIALOG_DATA,
     useValue: {}
   },
-  DomoviService, AkademskeGodineService, FakultetiService, TipoviSobeService, UlogeService],
+  DomoviService, AkademskeGodineService, FakultetiService, TipoviSobeService, UlogeService, KorisniciService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
