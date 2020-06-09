@@ -44,6 +44,21 @@ import { UlogeService } from './services/uloge.service';
 import { KorisniciComponent } from './components/korisnici/korisnici.component';
 import { KorisniciService } from './services/korisnici.service';
 import { KorisniciDialogComponent } from './components/dialogs/korisnici-dialog/korisnici-dialog.component';
+import { RecepcionariComponent } from './components/recepcionari/recepcionari.component';
+import { GostiComponent } from './components/gosti/gosti.component';
+import { SobeComponent } from './components/sobe/sobe.component';
+import { StanariComponent } from './components/stanari/stanari.component';
+import { SluzbeniciComponent } from './components/sluzbenici/sluzbenici.component';
+import { StudentiComponent } from './components/studenti/studenti.component';
+import { RecepcionariDialogComponent } from './components/dialogs/recepcionari-dialog/recepcionari-dialog.component';
+import { GostiDialogComponent } from './components/dialogs/gosti-dialog/gosti-dialog.component';
+import { SluzbeniciDialogComponent } from './components/dialogs/sluzbenici-dialog/sluzbenici-dialog.component';
+import { StanariDialogComponent } from './components/dialogs/stanari-dialog/stanari-dialog.component';
+import { StudentiDialogComponent } from './components/dialogs/studenti-dialog/studenti-dialog.component';
+import { SobeDialogComponent } from './components/dialogs/sobe-dialog/sobe-dialog.component';
+import { RecepcionariService } from './services/recepcionari.service';
+import { SluzbeniciService } from './services/sluzbenici.service';
+import { SobeService } from './services/sobe.service';
 
 const Routes = [
   { 
@@ -69,6 +84,24 @@ const Routes = [
   {
     path: 'korisnici', component: KorisniciComponent
   },
+  {
+    path: 'recepcionari', component: RecepcionariComponent
+  },
+  {
+    path: 'gosti', component: GostiComponent
+  },
+  {
+    path: 'sluzbenici', component: SluzbeniciComponent
+  },
+  {
+    path: 'stanari', component: StanariComponent
+  },
+  {
+    path: 'studenti', component: StudentiComponent
+  },
+  {
+    path: 'sobe', component: SobeComponent
+  }
  ];
 
 @NgModule({
@@ -85,7 +118,19 @@ const Routes = [
     UlogeComponent,
     UlogeDialogComponent,
     KorisniciComponent,
-    KorisniciDialogComponent
+    KorisniciDialogComponent,
+    RecepcionariComponent,
+    GostiComponent,
+    SobeComponent,
+    StanariComponent,
+    SluzbeniciComponent,
+    StudentiComponent,
+    RecepcionariDialogComponent,
+    GostiDialogComponent,
+    SluzbeniciDialogComponent,
+    StanariDialogComponent,
+    StudentiDialogComponent,
+    SobeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -120,7 +165,15 @@ const Routes = [
   { provide: MAT_DIALOG_DATA,
     useValue: {}
   },
-  DomoviService, AkademskeGodineService, FakultetiService, TipoviSobeService, UlogeService, KorisniciService],
+  DomoviService, 
+  AkademskeGodineService, 
+  FakultetiService, 
+  TipoviSobeService, 
+  UlogeService, 
+  KorisniciService, 
+  RecepcionariService,
+  SluzbeniciService,
+  SobeService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
