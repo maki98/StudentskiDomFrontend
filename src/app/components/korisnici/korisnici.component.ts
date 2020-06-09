@@ -13,6 +13,9 @@ import { FormsModule } from '@angular/forms';
 import { Korisnici } from 'src/app/models/korisnici';
 import { KorisniciDialogComponent } from '../dialogs/korisnici-dialog/korisnici-dialog.component';
 
+import { UlogeService } from '../../services/uloge.service';
+import { Uloge } from 'src/app/models/uloge';
+
 @Component({
   selector: 'app-korisnici',
   templateUrl: './korisnici.component.html',
@@ -21,6 +24,8 @@ import { KorisniciDialogComponent } from '../dialogs/korisnici-dialog/korisnici-
 export class KorisniciComponent implements OnInit {
 
   public isMenuOpen: boolean = false;
+
+  public Uloge: Uloge[];
 
   displayedColumns = ['KorisnikID', 'Ime', 'Prezime', 'Jmbg','Telefon', 'Email', 'Lozinka', 'UlogaID', 'actions'];
   dataSource: MatTableDataSource<Korisnici>;
@@ -31,11 +36,19 @@ export class KorisniciComponent implements OnInit {
   constructor(public httpClient: HttpClient, 
         public dialog: MatDialog, 
         public snackBar: MatSnackBar, 
-        public korisniciService: KorisniciService) {
+        public korisniciService: KorisniciService,
+        public ulogeService: UlogeService) {
   }
 
   ngOnInit() {
     this.loadData();
+    this.ulogeService.getAllUloge().subscribe(
+      data => this.Uloge = data
+    );
+  }
+
+  public getMyName(id):string{
+    return this.Uloge.find(element => element.UlogaID == Number(id)).NazivUloge;
   }
 
   public loadData() {
@@ -43,7 +56,7 @@ export class KorisniciComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sortingDataAccessor = (data, property) => {
         switch (property) {
-          case 'id': return data[property];
+          case 'UlogaID': return data[property];
           default: return data[property].toLocaleLowerCase();
         }
       };

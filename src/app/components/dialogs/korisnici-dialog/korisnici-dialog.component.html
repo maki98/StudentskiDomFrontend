@@ -42,9 +42,13 @@
         </mat-form-field>
       </div>
       <div class="form">
-        <mat-form-field >
-          <input matInput placeholder="UlogaID" [(ngModel)]="data.UlogaID"
-          name="UlogaID" [disabled] = "flag == 3" required>
+        <mat-form-field>
+          <mat-label>Uloge</mat-label>
+          <mat-select [(ngModel)]="data.UlogaID" name="Uloge" [disabled] = "flag == 3" required>
+            <mat-option *ngFor="let ul of Uloge" [value]="ul.UlogaID">
+              {{ul.NazivUloge}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
   

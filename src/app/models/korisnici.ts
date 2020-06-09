@@ -7,4 +7,5 @@ export class Korisnici {
     Email: string;
     Lozinka: string;
     UlogaID: number;
+    NazivUloge?: string;
 }

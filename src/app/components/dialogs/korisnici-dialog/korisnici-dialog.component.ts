@@ -6,6 +6,8 @@ import { KorisniciService } from '../../../services/korisnici.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Uloge } from 'src/app/models/uloge';
+import { UlogeService } from 'src/app/services/uloge.service';
 
 
 @Component({
@@ -19,12 +21,18 @@ export class KorisniciDialogComponent implements OnInit {
   public flag: number;
   public submit: boolean = false;
 
+  public Uloge: Uloge[];
+
   constructor(public snackBar: MatSnackBar,
               public dialogRef: MatDialogRef<KorisniciDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Korisnici,
-              public korisniciService: KorisniciService) { }
+              public korisniciService: KorisniciService,
+              public ulogeService: UlogeService) { }
 
   ngOnInit() {
+    this.ulogeService.getAllUloge().subscribe(
+      data => this.Uloge = data
+    )
   }
 
   public add(): void {

@@ -41,8 +41,7 @@ export class TipoviSobeComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sortingDataAccessor = (data, property) => {
         switch (property) {
-          case 'id': return data[property];
-          default: return data[property].toLocaleLowerCase();
+          default: return data[property];
         }
       };
 

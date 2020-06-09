@@ -46,7 +46,7 @@
 
       <ng-container matColumnDef="UlogaID">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Uloga</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.UlogaID}}</mat-cell>
+        <mat-cell *matCellDef="let row"> {{getMyName(row.UlogaID)}}</mat-cell>
       </ng-container>
 
        <!-- actions -->
