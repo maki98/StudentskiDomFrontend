@@ -11,6 +11,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Sobe } from 'src/app/models/sobe';
 import { SobeDialogComponent } from '../dialogs/sobe-dialog/sobe-dialog.component';
 
+import { DomoviService } from '../../services/domovi.service';
+import { Domovi } from '../../models/domovi';
+
+import { TipoviSobeService } from '../../services/tipovi-sobe.service';
+import { TipoviSobe } from '../../models/tipovi-sobe';
+
 @Component({
   selector: 'app-sobe',
   templateUrl: './sobe.component.html',
@@ -19,6 +25,9 @@ import { SobeDialogComponent } from '../dialogs/sobe-dialog/sobe-dialog.componen
 export class SobeComponent implements OnInit {
 
   public isMenuOpen: boolean = false;
+
+  public Domovi: Domovi[];
+  public TipoviSobe: TipoviSobe[];
 
   displayedColumns = ['SobaID', 'DomID', 'TipSobeID', 'BrojSobe', 'actions'];
   dataSource: MatTableDataSource<Sobe>;
@@ -29,11 +38,27 @@ export class SobeComponent implements OnInit {
   constructor(public httpClient: HttpClient, 
         public dialog: MatDialog, 
         public snackBar: MatSnackBar, 
-        public sobeService: SobeService) {
+        public sobeService: SobeService,
+        public domoviService: DomoviService,
+        public tipovisobeService: TipoviSobeService ) {
   }
 
   ngOnInit() {
     this.loadData();
+    this.domoviService.getAllDomovi().subscribe(
+      data => this.Domovi = data
+    );
+    this.tipovisobeService.getAllTipoviSobe().subscribe(
+      data => this.TipoviSobe = data
+    );
+  }
+
+  public getMyNameDom(id):string{
+    return this.Domovi.find(element => element.DomID == Number(id)).NazivDom;
+  }
+
+  public getBrojKreveta(id):number{
+    return this.TipoviSobe.find(element => element.TipSobeID == Number(id)).BrojKreveta;
   }
 
   public loadData() {
@@ -41,7 +66,9 @@ export class SobeComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sortingDataAccessor = (data, property) => {
         switch (property) {
-          case 'id': return data[property];
+          case 'DomID': return data[property];
+          case 'TipSobeID': return data[property];
+          case 'BrojSobe': return data[property];
           default: return data[property].toLocaleLowerCase();
         }
       };

@@ -7,6 +7,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+import { Domovi } from 'src/app/models/domovi';
+import { DomoviService } from 'src/app/services/domovi.service';
+
+import { TipoviSobe } from 'src/app/models/tipovi-sobe';
+import { TipoviSobeService } from 'src/app/services/tipovi-sobe.service';
+
 @Component({
   selector: 'app-sobe-dialog',
   templateUrl: './sobe-dialog.component.html',
@@ -18,12 +24,23 @@ export class SobeDialogComponent implements OnInit {
   public flag: number;
   public submit: boolean = false;
 
+  public Domovi: Domovi[];
+  public TipoviSobe: TipoviSobe[];
+
   constructor(public snackBar: MatSnackBar,
               public dialogRef: MatDialogRef<SobeDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Sobe,
-              public sobeService: SobeService) { }
+              public sobeService: SobeService,
+              public domoviService: DomoviService,
+              public tipovisobeService: TipoviSobeService) { }
 
   ngOnInit() {
+    this.domoviService.getAllDomovi().subscribe(
+      data => this.Domovi = data
+    )
+    this.tipovisobeService.getAllTipoviSobe().subscribe(
+      data => this.TipoviSobe = data
+    )
   }
 
   public add(): void {

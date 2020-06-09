@@ -27,7 +27,7 @@ export class KorisniciComponent implements OnInit {
 
   public Uloge: Uloge[];
 
-  displayedColumns = ['KorisnikID', 'Ime', 'Prezime', 'Jmbg','Telefon', 'Email', 'Lozinka', 'UlogaID', 'actions'];
+  displayedColumns = ['KorisnikID', 'Ime', 'Prezime', 'Jmbg', 'Telefon', 'Email', 'Lozinka', 'UlogaID', 'actions'];
   dataSource: MatTableDataSource<Korisnici>;
 
   @ViewChild(MatSort, { static: false }) sort: MatSort;

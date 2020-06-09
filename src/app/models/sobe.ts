@@ -3,4 +3,6 @@ export class Sobe {
     DomID: number;
     TipSobeID: number;
     BrojSobe: number;
+    DomNaziv: string;
+    BrojKreveta: number;
 }

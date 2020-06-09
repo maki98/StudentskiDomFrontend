@@ -9,11 +9,17 @@
       <div class="form">
         <mat-form-field>
           <input matInput placeholder="Službenik ID" [(ngModel)]="data.SluzbenikID" name="SluzbenikID"
-          [disabled] = "flag == 3" required>
+          [disabled] = "flag == 3" [disabled] = "flag == 2" required>
         </mat-form-field>
+      </div>
+      <div class="form">
         <mat-form-field>
-          <input matInput placeholder="Funkcija" [(ngModel)]="data.Funkcija" name="Funkcija"
-          [disabled] = "flag == 3" required>
+          <mat-label>Sertifikat</mat-label>
+          <mat-select [(ngModel)]="selectedValue" name="Funkcija" [disabled] = "flag == 3" required>
+            <mat-option *ngFor="let fu of Funkcija" [value]="fu.value">
+              {{fu.viewValue}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
   

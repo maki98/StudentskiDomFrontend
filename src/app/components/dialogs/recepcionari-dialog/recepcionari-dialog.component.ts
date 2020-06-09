@@ -7,6 +7,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+import { KorisniciService } from '../../../services/korisnici.service';
+import { Korisnici } from '../../../models/korisnici';
+
+interface Sertifikat {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-recepcionari-dialog',
   templateUrl: './recepcionari-dialog.component.html',
@@ -17,21 +25,31 @@ export class RecepcionariDialogComponent implements OnInit {
 
   public flag: number;
   public submit: boolean = false;
+  public selectedValue: string;
+
+  public Sertifikat: Sertifikat[] = [
+    {value: 'Ima', viewValue: 'Ima'},
+    {value: 'Nema', viewValue: 'Nema'}
+  ];
 
   constructor(public snackBar: MatSnackBar,
               public dialogRef: MatDialogRef<RecepcionariDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Recepcionari,
-              public recepcionariService: RecepcionariService) { }
+              public recepcionariService: RecepcionariService,
+              public korisniciService: KorisniciService) { }
 
   ngOnInit() {
   }
 
   public add(): void {
     this.data.RecepcionarID = Number(this.data.RecepcionarID);
+    this.data.Sertifikat = this.selectedValue;
     this.recepcionariService.addRecepcionari(this.data);
   }
 
   public update(): void {
+    this.data.RecepcionarID = Number(this.data.RecepcionarID);
+    this.data.Sertifikat = this.selectedValue;
     this.recepcionariService.updateRecepcionari(this.data);
   }
 

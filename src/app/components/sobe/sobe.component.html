@@ -15,13 +15,13 @@
       </ng-container>
   
       <ng-container matColumnDef="DomID">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>DomID</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.DomID}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Dom</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{getMyNameDom(row.DomID)}}</mat-cell>
       </ng-container>
   
       <ng-container matColumnDef="TipSobeID">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>TipSobeID</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.TipSobeID}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Broj kreveta</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{getBrojKreveta(row.TipSobeID)}}</mat-cell>
       </ng-container>
   
       <ng-container matColumnDef="BrojSobe">

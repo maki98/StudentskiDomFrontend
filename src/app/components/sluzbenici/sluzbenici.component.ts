@@ -11,6 +11,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Sluzbenici } from 'src/app/models/sluzbenici';
 import { SluzbeniciDialogComponent } from '../dialogs/sluzbenici-dialog/sluzbenici-dialog.component';
 import { SluzbeniciService } from 'src/app/services/sluzbenici.service';
+import { KorisniciService } from 'src/app/services/korisnici.service';
+import { Korisnici } from 'src/app/models/korisnici';
 
 @Component({
   selector: 'app-sluzbenici',
@@ -21,7 +23,9 @@ export class SluzbeniciComponent implements OnInit {
 
   public isMenuOpen: boolean = false;
 
-  displayedColumns = ['SluzbenikID', 'Funkcija', 'actions'];
+  public Korisnici: Korisnici[];
+
+  displayedColumns = ['SluzbenikID', 'Ime', 'Prezime', 'Funkcija', 'actions'];
   dataSource: MatTableDataSource<Sluzbenici>;
 
   @ViewChild(MatSort, { static: false }) sort: MatSort;
@@ -30,11 +34,23 @@ export class SluzbeniciComponent implements OnInit {
   constructor(public httpClient: HttpClient, 
         public dialog: MatDialog, 
         public snackBar: MatSnackBar, 
-        public sluzbeniciService: SluzbeniciService) {
+        public sluzbeniciService: SluzbeniciService,
+        public korisniciService: KorisniciService) {
   }
 
   ngOnInit() {
     this.loadData();
+    this.korisniciService.getAllKorisnici().subscribe(
+      data => this.Korisnici = data
+    );
+  }
+
+  public getMyName(id):string{
+    return this.Korisnici.find(element => element.KorisnikID == Number(id)).Ime;
+  }
+
+  public getMySurname(id):string{
+    return this.Korisnici.find(element => element.KorisnikID == Number(id)).Prezime;
   }
 
   public loadData() {
@@ -42,7 +58,6 @@ export class SluzbeniciComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sortingDataAccessor = (data, property) => {
         switch (property) {
-          case 'id': return data[property];
           default: return data[property].toLocaleLowerCase();
         }
       };

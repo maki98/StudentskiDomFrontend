@@ -6,9 +6,9 @@ import { KorisniciService } from '../../../services/korisnici.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+
 import { Uloge } from 'src/app/models/uloge';
 import { UlogeService } from 'src/app/services/uloge.service';
-
 
 @Component({
   selector: 'app-korisnici-dialog',

@@ -4,16 +4,21 @@
     <h3 mat-dialog-title *ngIf="flag == 2">Modifikacija recepcionara</h3>
     <h3 mat-dialog-title *ngIf="flag == 3">Brisanje recepcionara</h3>
 
-
     <form class="mat-dialog-content" #formControl="ngForm">
       <div class="form">
         <mat-form-field>
           <input matInput placeholder="Recepcionar ID" [(ngModel)]="data.RecepcionarID" name="RecepcionarID"
-          [disabled] = "flag == 3" required>
+          [disabled] = "flag == 3" [disabled] = "flag == 2" required>
         </mat-form-field>
+      </div>
+      <div class="form">
         <mat-form-field>
-          <input matInput placeholder="Sertifikat" [(ngModel)]="data.Sertifikat" name="Sertifikat"
-          [disabled] = "flag == 3" required>
+          <mat-label>Sertifikat</mat-label>
+          <mat-select [(ngModel)]="selectedValue" name="Sertifikat" [disabled] = "flag == 3" required>
+            <mat-option *ngFor="let se of Sertifikat" [value]="se.value">
+              {{se.viewValue}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
   

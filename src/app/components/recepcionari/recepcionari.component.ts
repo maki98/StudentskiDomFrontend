@@ -12,6 +12,10 @@ import { Recepcionari } from 'src/app/models/recepcionari';
 import { RecepcionariDialogComponent } from '../dialogs/recepcionari-dialog/recepcionari-dialog.component';
 import { RecepcionariService } from 'src/app/services/recepcionari.service';
 
+import { Korisnici } from 'src/app/models/korisnici';
+import { KorisniciDialogComponent } from '../dialogs/korisnici-dialog/korisnici-dialog.component';
+import { KorisniciService } from 'src/app/services/korisnici.service';
+
 @Component({
   selector: 'app-recepcionari',
   templateUrl: './recepcionari.component.html',
@@ -21,7 +25,9 @@ export class RecepcionariComponent implements OnInit {
 
   public isMenuOpen: boolean = false;
 
-  displayedColumns = ['RecepcionarID', 'Sertifikat', 'actions'];
+  public Korisnici: Korisnici[];
+
+  displayedColumns = ['RecepcionarID', 'Ime', 'Prezime', 'Sertifikat', 'actions'];
   dataSource: MatTableDataSource<Recepcionari>;
 
   @ViewChild(MatSort, { static: false }) sort: MatSort;
@@ -30,11 +36,23 @@ export class RecepcionariComponent implements OnInit {
   constructor(public httpClient: HttpClient, 
         public dialog: MatDialog, 
         public snackBar: MatSnackBar, 
-        public recepcionariService: RecepcionariService) {
+        public recepcionariService: RecepcionariService,
+        public korisniciService: KorisniciService) {
   }
 
   ngOnInit() {
     this.loadData();
+    this.korisniciService.getAllKorisnici().subscribe(
+      data => this.Korisnici = data
+    );
+  }
+
+  public getMyName(id):string{
+    return this.Korisnici.find(element => element.KorisnikID == Number(id)).Ime;
+  }
+
+  public getMySurname(id):string{
+    return this.Korisnici.find(element => element.KorisnikID == Number(id)).Prezime;
   }
 
   public loadData() {
@@ -42,7 +60,6 @@ export class RecepcionariComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sortingDataAccessor = (data, property) => {
         switch (property) {
-          case 'id': return data[property];
           default: return data[property].toLocaleLowerCase();
         }
       };
