@@ -14,7 +14,7 @@
       </div>
       <div class="form">
         <mat-form-field>
-          <mat-label>Sertifikat</mat-label>
+          <mat-label>Funkcija</mat-label>
           <mat-select [(ngModel)]="selectedValue" name="Funkcija" [disabled] = "flag == 3" required>
             <mat-option *ngFor="let fu of Funkcija" [value]="fu.value">
               {{fu.viewValue}}

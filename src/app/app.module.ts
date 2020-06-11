@@ -59,48 +59,68 @@ import { SobeDialogComponent } from './components/dialogs/sobe-dialog/sobe-dialo
 import { RecepcionariService } from './services/recepcionari.service';
 import { SluzbeniciService } from './services/sluzbenici.service';
 import { SobeService } from './services/sobe.service';
+import { LoginComponent } from './components/login/login.component';
+import { SluzbenikAuthGuard} from './guards/sluzbenik/sluzbenik-auth.guard';
+import { HomeSluzbeniciComponent } from './components/home/home-sluzbenici/home-sluzbenici.component';
 
 const Routes = [
   { 
     path: '',
-    redirectTo: 'domovi',
+    redirectTo: 'login',
     pathMatch: 'full'
+  },
+  {
+    path: 'login', component: LoginComponent
+  },
+  {
+    path: 'homeSluzbenici', component: HomeSluzbeniciComponent
   },
   {
     path: 'uloge', component: UlogeComponent
   },
   {
-    path: 'domovi', component: DomoviComponent
+    path: 'domovi', component: DomoviComponent,
+    canActivate: [SluzbenikAuthGuard]
   },
   {
-    path: 'akademskegodine', component: AkademskeGodineComponent
+    path: 'akademskegodine', component: AkademskeGodineComponent,
+    canActivate: [SluzbenikAuthGuard]
   },
   {
-    path: 'fakulteti', component: FakultetiComponent
+    path: 'fakulteti', component: FakultetiComponent,
+    canActivate: [SluzbenikAuthGuard]
   },
   {
-    path: 'tipovisobe', component: TipoviSobeComponent
+    path: 'tipovisobe', component: TipoviSobeComponent,
+    canActivate: [SluzbenikAuthGuard]
   },
   {
-    path: 'korisnici', component: KorisniciComponent
+    path: 'korisnici', component: KorisniciComponent,
+    canActivate: [SluzbenikAuthGuard]
   },
   {
-    path: 'recepcionari', component: RecepcionariComponent
+    path: 'recepcionari', component: RecepcionariComponent,
+    canActivate: [SluzbenikAuthGuard]
   },
   {
-    path: 'gosti', component: GostiComponent
+    path: 'gosti', component: GostiComponent,
+    canActivate: [SluzbenikAuthGuard]
   },
   {
-    path: 'sluzbenici', component: SluzbeniciComponent
+    path: 'sluzbenici', component: SluzbeniciComponent,
+    canActivate: [SluzbenikAuthGuard]
   },
   {
-    path: 'stanari', component: StanariComponent
+    path: 'stanari', component: StanariComponent,
+    canActivate: [SluzbenikAuthGuard]
   },
   {
-    path: 'studenti', component: StudentiComponent
+    path: 'studenti', component: StudentiComponent,
+    canActivate: [SluzbenikAuthGuard]
   },
   {
-    path: 'sobe', component: SobeComponent
+    path: 'sobe', component: SobeComponent,
+    canActivate: [SluzbenikAuthGuard]
   }
  ];
 
@@ -130,8 +150,10 @@ const Routes = [
     SluzbeniciDialogComponent,
     StanariDialogComponent,
     StudentiDialogComponent,
-    SobeDialogComponent
-  ],
+    SobeDialogComponent,
+    LoginComponent,
+    HomeSluzbeniciComponent
+    ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -173,7 +195,8 @@ const Routes = [
   KorisniciService, 
   RecepcionariService,
   SluzbeniciService,
-  SobeService ],
+  SobeService,
+  SluzbenikAuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

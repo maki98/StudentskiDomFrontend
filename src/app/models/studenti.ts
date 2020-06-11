@@ -1,6 +1,7 @@
 export class Studenti {
     StudentID: number;
     FakultetID: number;
+    NazivFak: string;
     AdresaStalnogPrebivalistaStud: string;
-    Pol: string;
+    PolStud: string;
 }

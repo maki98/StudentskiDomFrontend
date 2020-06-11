@@ -55,3 +55,14 @@
   display: flex;
   justify-content: flex-end;
 }
+
+
+.title-center {
+  margin: 0 auto;
+ }
+
+.space {
+  display: inline-block;
+  margin-right: 10px;
+  margin-top: 10px;
+}

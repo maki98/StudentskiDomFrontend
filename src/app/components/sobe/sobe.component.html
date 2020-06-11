@@ -1,10 +1,14 @@
 <mat-toolbar color="primary">
-    <span class="title-center">Domovi</span>
+    <span class="title-center">Sobe</span>
+    <span class="space">
+      <mat-icon>perm_identity</mat-icon>
+  </span>
+      <mat-icon>logout</mat-icon>
     </mat-toolbar>
   
     <div class="container mat-elevation-z8">
     <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pretraži">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pretraži broj sobe">
     </mat-form-field>
 
     <mat-table [dataSource]="dataSource" matSort class="mat-cell">
