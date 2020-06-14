@@ -165,7 +165,7 @@ const Routes = [
     LoginComponent,
     HomeSluzbeniciComponent,
     MojProfilComponent,
-    MojProfilDialogComponent
+    MojProfilDialogComponent,
  ],
  exports: [ RouterModule ]
  ,
