@@ -56,7 +56,8 @@ export class KorisniciComponent implements OnInit {
     const lozinka = null;
     //if(data[0].UlogaID == )
     this.router.navigate(['login']);
-    this.Auth.setLoggedIn(false);   
+    this.Auth.setLoggedInStatus(false);   
+    this.Auth.setUlogaVal(0); 
     this.snackBar.open("Odjavili ste se", "U redu", {
       duration: 2000,
     });
@@ -71,6 +72,7 @@ export class KorisniciComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sortingDataAccessor = (data, property) => {
         switch (property) {
+          case 'Jmbg': return data[property];
           case 'UlogaID': return data[property];
           default: return data[property].toLocaleLowerCase();
         }

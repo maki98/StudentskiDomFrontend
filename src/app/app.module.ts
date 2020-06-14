@@ -60,8 +60,9 @@ import { RecepcionariService } from './services/recepcionari.service';
 import { SluzbeniciService } from './services/sluzbenici.service';
 import { SobeService } from './services/sobe.service';
 import { LoginComponent } from './components/login/login.component';
-import { SluzbenikAuthGuard} from './guards/sluzbenik/sluzbenik-auth.guard';
 import { HomeSluzbeniciComponent } from './components/home/home-sluzbenici/home-sluzbenici.component';
+import { AuthService } from './auth.service';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
 
 const Routes = [
   { 
@@ -73,54 +74,57 @@ const Routes = [
     path: 'login', component: LoginComponent,
   },
   {
-    path: 'homeSluzbenici', component: HomeSluzbeniciComponent
+    path: 'homeSluzbenici', 
+    component: HomeSluzbeniciComponent,
+    canActivate: [AuthGuardGuard],
   },
   {
-    path: 'uloge', component: UlogeComponent
+    path: 'uloge', component: UlogeComponent,
+    canActivate: [AuthGuardGuard]
   },
   {
     path: 'domovi', component: DomoviComponent,
-    canActivate: [SluzbenikAuthGuard]
+    canActivate: [AuthGuardGuard]
   },
   {
     path: 'akademskegodine', component: AkademskeGodineComponent,
-    canActivate: [SluzbenikAuthGuard]
+    canActivate: [AuthGuardGuard]
   },
   {
     path: 'fakulteti', component: FakultetiComponent,
-    canActivate: [SluzbenikAuthGuard]
+    canActivate: [AuthGuardGuard]
   },
   {
     path: 'tipovisobe', component: TipoviSobeComponent,
-    canActivate: [SluzbenikAuthGuard]
+    canActivate: [AuthGuardGuard]
   },
   {
     path: 'korisnici', component: KorisniciComponent,
-    canActivate: [SluzbenikAuthGuard]
+    canActivate: [AuthGuardGuard]
   },
   {
-    path: 'recepcionari', component: RecepcionariComponent
-    //canActivate: [SluzbenikAuthGuard]
+    path: 'recepcionari', component: RecepcionariComponent,
+    canActivate: [AuthGuardGuard]
   },
   {
     path: 'gosti', component: GostiComponent,
-    //canActivate: [SluzbenikAuthGuard]
+    canActivate: [AuthGuardGuard]
   },
   {
-    path: 'sluzbenici', component: SluzbeniciComponent
-    //canActivate: [SluzbenikAuthGuard]
+    path: 'sluzbenici', component: SluzbeniciComponent,
+    canActivate: [AuthGuardGuard]
   },
   {
-    path: 'stanari', component: StanariComponent
-    //canActivate: [SluzbenikAuthGuard]
+    path: 'stanari', component: StanariComponent,
+    canActivate: [AuthGuardGuard]
   },
   {
-    path: 'studenti', component: StudentiComponent
-    //canActivate: [SluzbenikAuthGuard]
+    path: 'studenti', component: StudentiComponent,
+    canActivate: [AuthGuardGuard]
   },
   {
     path: 'sobe', component: SobeComponent,
-    canActivate: [SluzbenikAuthGuard]
+    canActivate: [AuthGuardGuard]
   }
  ];
 
@@ -198,7 +202,7 @@ const Routes = [
   RecepcionariService,
   SluzbeniciService,
   SobeService,
-  SluzbenikAuthGuard ],
+  AuthGuardGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

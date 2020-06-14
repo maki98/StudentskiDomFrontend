@@ -11,40 +11,40 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-button [routerLink]="['/korisnici']">Korisnici</a>
+          <a mat-button [routerLink]="['/korisnici']" [disabled]="isDisabledKorisnici()">Korisnici</a>
         </mat-nav-list>
         <mat-nav-list>
-          <a mat-button [routerLink]="['/uloge']">Uloge</a>
+          <a mat-button [routerLink]="['/uloge']" [disabled]="isDisabledUloga()">Uloge</a>
         </mat-nav-list>
         <mat-nav-list>
-          <a mat-button [routerLink]="['/gosti']">Gosti</a>
+          <a mat-button [routerLink]="['/gosti']" [disabled]="isDisabledGosti()">Gosti</a>
         </mat-nav-list>
         <mat-nav-list>
-          <a mat-button [routerLink]="['/sluzbenici']">Sluzbenici</a>
+          <a mat-button [routerLink]="['/sluzbenici']" [disabled]="isDisabledSluzbenici()">Sluzbenici</a>
         </mat-nav-list>
         <mat-nav-list>
-          <a mat-button [routerLink]="['/sobe']">Sobe</a>
+          <a mat-button [routerLink]="['/sobe']" [disabled]="isDisabledSobe()">Sobe</a>
         </mat-nav-list>
         <mat-nav-list>
-          <a mat-button [routerLink]="['/stanari']">Stanari</a>
+          <a mat-button [routerLink]="['/stanari']" [disabled]="isDisabledStanari()">Stanari</a>
         </mat-nav-list>
         <mat-nav-list>
-          <a mat-button [routerLink]="['/studenti']">Studenti</a>
+          <a mat-button [routerLink]="['/studenti']" [disabled]="isDisabledStudenti()">Studenti</a>
         </mat-nav-list>
         <mat-nav-list>
-          <a mat-button [routerLink]="['/recepcionari']">Recepcionari</a>
+          <a mat-button [routerLink]="['/recepcionari']" [disabled]="isDisabledRecepcionari()">Recepcionari</a>
         </mat-nav-list>
         <mat-nav-list>
-          <a mat-button [routerLink]="['/domovi']">Domovi</a>
+          <a mat-button [routerLink]="['/domovi']" [disabled]="isDisabledDomovi()">Domovi</a>
         </mat-nav-list>
         <mat-nav-list>
-          <a mat-button [routerLink]="['/akademskegodine']">Akademske godine</a>
+          <a mat-button [routerLink]="['/akademskegodine']" [disabled]="isDisabledAkademskeGodine()">Akademske godine</a>
         </mat-nav-list>
         <mat-nav-list>
-          <a mat-button [routerLink]="['/fakulteti']">Fakulteti</a>
+          <a mat-button [routerLink]="['/fakulteti']" [disabled]="isDisabledFakulteti()">Fakulteti</a>
         </mat-nav-list>
         <mat-nav-list>
-          <a mat-button [routerLink]="['/tipovisobe']">Tipovi sobe</a>
+          <a mat-button [routerLink]="['/tipovisobe']" [disabled]="isDisabledTipoviSobe()">Tipovi sobe</a>
         </mat-nav-list>
 
       </mat-expansion-panel>

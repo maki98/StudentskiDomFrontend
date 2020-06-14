@@ -13,6 +13,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 export class AuthService {
 
   private loggedInStatus = false;
+  private ulogaVal;
 
   readonly API_URL = 'http://localhost:8086/api/logovanje';
 
@@ -20,12 +21,20 @@ export class AuthService {
     public httpClient: HttpClient
   ) { }
 
-  setLoggedIn(value: boolean) {
-    this.loggedInStatus = value
+  setLoggedInStatus(value: boolean) {
+    this.loggedInStatus = value;
   }
 
-  get isLoggedIn() {
+  get isLoggedInStatus() {
     return this.loggedInStatus;
+  }
+
+  setUlogaVal(value) {
+    this.ulogaVal = value;
+  }
+
+  get vUlogaVal() {
+    return this.ulogaVal;
   }
 
   getUserDetails(email, lozinka) {

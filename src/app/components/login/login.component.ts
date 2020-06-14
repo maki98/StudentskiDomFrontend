@@ -32,9 +32,10 @@ export class LoginComponent implements OnInit {
         if(data[0].KorisnikID != null)
         {
           console.log(data);
-          //if(data[0].UlogaID == )
           this.router.navigate(['homeSluzbenici']);
-          this.Auth.setLoggedIn(true);
+          this.Auth.setLoggedInStatus(true);
+          this.Auth.setUlogaVal(data[0].UlogaID);
+          console.log('ul:',this.Auth.vUlogaVal);
         }
         else
         {

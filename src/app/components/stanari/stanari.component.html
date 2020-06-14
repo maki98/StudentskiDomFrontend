@@ -11,7 +11,7 @@
     <mat-table [dataSource]="dataSource" matSort class="mat-cell">
 
       <ng-container matColumnDef="AkademskaGodinaID">
-        <mat-header-cell *matHeaderCellDef>Godina</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Godina</mat-header-cell>
         <mat-cell *matCellDef="let row" >{{getGodina(row.AkademskaGodinaID)}}</mat-cell>
       </ng-container>
 
@@ -21,7 +21,7 @@
       </ng-container>
   
       <ng-container matColumnDef="SobaID">
-        <mat-header-cell *matHeaderCellDef>Soba</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Soba</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{getBrojSobe(row.SobaID)}}</mat-cell>
       </ng-container>
   
@@ -31,7 +31,7 @@
       </ng-container>
   
       <ng-container matColumnDef="Sluzbenik">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Sluzbenik</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Sluzbenik</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{getMyNameKorisnik(row.SluzbenikID)}} {{getMySurnameKorisnik(row.SluzbenikID)}}</mat-cell>
       </ng-container>
   

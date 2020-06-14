@@ -63,7 +63,8 @@ export class StudentiComponent implements OnInit {
     const lozinka = null;
     //if(data[0].UlogaID == )
     this.router.navigate(['login']);
-    this.Auth.setLoggedIn(false);   
+    this.Auth.setLoggedInStatus(false);   
+    this.Auth.setUlogaVal(0); 
     this.snackBar.open("Odjavili ste se", "U redu", {
       duration: 2000,
     });
