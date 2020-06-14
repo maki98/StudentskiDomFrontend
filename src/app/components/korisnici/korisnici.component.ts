@@ -9,6 +9,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 import { Korisnici } from 'src/app/models/korisnici';
 import { KorisniciDialogComponent } from '../dialogs/korisnici-dialog/korisnici-dialog.component';
@@ -37,7 +39,9 @@ export class KorisniciComponent implements OnInit {
         public dialog: MatDialog, 
         public snackBar: MatSnackBar, 
         public korisniciService: KorisniciService,
-        public ulogeService: UlogeService) {
+        public ulogeService: UlogeService,
+        private router: Router,
+        private Auth: AuthService) {
   }
 
   ngOnInit() {
@@ -45,6 +49,17 @@ export class KorisniciComponent implements OnInit {
     this.ulogeService.getAllUloge().subscribe(
       data => this.Uloge = data
     );
+  }
+
+  logOut(event) {
+    const email = null;
+    const lozinka = null;
+    //if(data[0].UlogaID == )
+    this.router.navigate(['login']);
+    this.Auth.setLoggedIn(false);   
+    this.snackBar.open("Odjavili ste se", "U redu", {
+      duration: 2000,
+    });
   }
 
   public getMyName(id):string{

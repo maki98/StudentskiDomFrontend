@@ -3,6 +3,7 @@
 <mat-toolbar color="primary">
     <span class="title-center">Logovanje</span>
     </mat-toolbar>
+    
   
       <form (submit)="loginUser($event)" class="example-form">
           <div>
@@ -13,7 +14,7 @@
   
         <div>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Lozinka" id="Lozinka" [type]="hide ? 'text' : 'password'" formControlName="password" required>
+            <input matInput placeholder="Lozinka" id="Lozinka" [type]="hide ? 'text' : 'password'" required>
             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </mat-form-field>
         </div>

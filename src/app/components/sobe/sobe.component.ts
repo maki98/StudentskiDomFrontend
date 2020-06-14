@@ -10,6 +10,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Sobe } from 'src/app/models/sobe';
 import { SobeDialogComponent } from '../dialogs/sobe-dialog/sobe-dialog.component';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 import { DomoviService } from '../../services/domovi.service';
 import { Domovi } from '../../models/domovi';
@@ -40,7 +42,9 @@ export class SobeComponent implements OnInit {
         public snackBar: MatSnackBar, 
         public sobeService: SobeService,
         public domoviService: DomoviService,
-        public tipovisobeService: TipoviSobeService ) {
+        public tipovisobeService: TipoviSobeService,
+        private router: Router,
+        private Auth: AuthService ) {
   }
 
   ngOnInit() {
@@ -51,6 +55,17 @@ export class SobeComponent implements OnInit {
     this.tipovisobeService.getAllTipoviSobe().subscribe(
       data => this.TipoviSobe = data
     );
+  }
+
+  logOut(event) {
+    const email = null;
+    const lozinka = null;
+    //if(data[0].UlogaID == )
+    this.router.navigate(['login']);
+    this.Auth.setLoggedIn(false);   
+    this.snackBar.open("Odjavili ste se", "U redu", {
+      duration: 2000,
+    });
   }
 
   public getMyNameDom(id):string{

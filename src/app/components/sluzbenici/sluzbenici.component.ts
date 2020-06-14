@@ -13,6 +13,8 @@ import { SluzbeniciDialogComponent } from '../dialogs/sluzbenici-dialog/sluzbeni
 import { SluzbeniciService } from 'src/app/services/sluzbenici.service';
 import { KorisniciService } from 'src/app/services/korisnici.service';
 import { Korisnici } from 'src/app/models/korisnici';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-sluzbenici',
@@ -35,7 +37,9 @@ export class SluzbeniciComponent implements OnInit {
         public dialog: MatDialog, 
         public snackBar: MatSnackBar, 
         public sluzbeniciService: SluzbeniciService,
-        public korisniciService: KorisniciService) {
+        public korisniciService: KorisniciService,
+        private router: Router,
+        private Auth: AuthService) {
   }
 
   ngOnInit() {
@@ -43,6 +47,17 @@ export class SluzbeniciComponent implements OnInit {
     this.korisniciService.getAllKorisnici().subscribe(
       data => this.Korisnici = data
     );
+  }
+
+  logOut(event) {
+    const email = null;
+    const lozinka = null;
+    //if(data[0].UlogaID == )
+    this.router.navigate(['login']);
+    this.Auth.setLoggedIn(false);   
+    this.snackBar.open("Odjavili ste se", "U redu", {
+      duration: 2000,
+    });
   }
 
   public getMyName(id):string{

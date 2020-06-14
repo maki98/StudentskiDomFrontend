@@ -10,6 +10,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Domovi } from 'src/app/models/domovi';
 import { DomoviDialogComponent } from '../dialogs/domovi-dialog/domovi-dialog.component';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
+
 
 @Component({
   selector: 'app-domovi',
@@ -29,11 +32,24 @@ export class DomoviComponent implements OnInit {
   constructor(public httpClient: HttpClient, 
         public dialog: MatDialog, 
         public snackBar: MatSnackBar, 
-        public domoviService: DomoviService) {
+        public domoviService: DomoviService,
+        private router: Router,
+        private Auth: AuthService) {
   }
 
   ngOnInit() {
     this.loadData();
+  }
+
+  logOut(event) {
+    const email = null;
+    const lozinka = null;
+    //if(data[0].UlogaID == )
+    this.router.navigate(['login']);
+    this.Auth.setLoggedIn(false);   
+    this.snackBar.open("Odjavili ste se", "U redu", {
+      duration: 2000,
+    });
   }
 
   public loadData() {

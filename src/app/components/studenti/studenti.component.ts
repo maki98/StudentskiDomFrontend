@@ -16,6 +16,9 @@ import { FakultetiService } from '../../services/fakulteti.service';
 import { KorisniciService } from 'src/app/services/korisnici.service';
 import { Korisnici } from 'src/app/models/korisnici';
 
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
+
 @Component({
   selector: 'app-studenti',
   templateUrl: './studenti.component.html',
@@ -39,7 +42,9 @@ export class StudentiComponent implements OnInit {
         public snackBar: MatSnackBar, 
         public studentiService: StudentiService,
         public fakultetiService: FakultetiService,
-        public korisniciService: KorisniciService) {
+        public korisniciService: KorisniciService,
+        private router: Router,
+        private Auth: AuthService) {
   }
 
   ngOnInit() {
@@ -51,6 +56,17 @@ export class StudentiComponent implements OnInit {
     this.korisniciService.getAllKorisnici().subscribe(
       data => this.Korisnici = data
     );
+  }
+
+  logOut(event) {
+    const email = null;
+    const lozinka = null;
+    //if(data[0].UlogaID == )
+    this.router.navigate(['login']);
+    this.Auth.setLoggedIn(false);   
+    this.snackBar.open("Odjavili ste se", "U redu", {
+      duration: 2000,
+    });
   }
 
   public getMyName(id):string{

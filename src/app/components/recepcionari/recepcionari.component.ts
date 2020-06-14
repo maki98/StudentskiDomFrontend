@@ -11,6 +11,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Recepcionari } from 'src/app/models/recepcionari';
 import { RecepcionariDialogComponent } from '../dialogs/recepcionari-dialog/recepcionari-dialog.component';
 import { RecepcionariService } from 'src/app/services/recepcionari.service';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 import { Korisnici } from 'src/app/models/korisnici';
 import { KorisniciDialogComponent } from '../dialogs/korisnici-dialog/korisnici-dialog.component';
@@ -37,7 +39,9 @@ export class RecepcionariComponent implements OnInit {
         public dialog: MatDialog, 
         public snackBar: MatSnackBar, 
         public recepcionariService: RecepcionariService,
-        public korisniciService: KorisniciService) {
+        public korisniciService: KorisniciService,
+        private router: Router,
+        private Auth: AuthService) {
   }
 
   ngOnInit() {
@@ -45,6 +49,17 @@ export class RecepcionariComponent implements OnInit {
     this.korisniciService.getAllKorisnici().subscribe(
       data => this.Korisnici = data
     );
+  }
+
+  logOut(event) {
+    const email = null;
+    const lozinka = null;
+    //if(data[0].UlogaID == )
+    this.router.navigate(['login']);
+    this.Auth.setLoggedIn(false);   
+    this.snackBar.open("Odjavili ste se", "U redu", {
+      duration: 2000,
+    });
   }
 
   public getMyName(id):string{

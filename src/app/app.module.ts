@@ -70,7 +70,7 @@ const Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'login', component: LoginComponent
+    path: 'login', component: LoginComponent,
   },
   {
     path: 'homeSluzbenici', component: HomeSluzbeniciComponent
@@ -153,7 +153,7 @@ const Routes = [
     SobeDialogComponent,
     LoginComponent,
     HomeSluzbeniciComponent
-    ],
+ ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

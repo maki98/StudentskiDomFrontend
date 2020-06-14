@@ -11,6 +11,9 @@ import { TipoviSobe } from 'src/app/models/tipovi-sobe';
 import { TipoviSobeDialogComponent } from '../dialogs/tipovi-sobe-dialog/tipovi-sobe-dialog.component';
 import { TipoviSobeService } from 'src/app/services/tipovi-sobe.service';
 
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
+
 @Component({
   selector: 'app-tipovi-sobe',
   templateUrl: './tipovi-sobe.component.html',
@@ -29,11 +32,24 @@ export class TipoviSobeComponent implements OnInit {
   constructor(public httpClient: HttpClient, 
         public dialog: MatDialog, 
         public snackBar: MatSnackBar, 
-        public tipovisobeService: TipoviSobeService) {
+        public tipovisobeService: TipoviSobeService,
+        private router: Router,
+        private Auth: AuthService) {
   }
 
   ngOnInit() {
     this.loadData();
+  }
+
+  logOut(event) {
+    const email = null;
+    const lozinka = null;
+    //if(data[0].UlogaID == )
+    this.router.navigate(['login']);
+    this.Auth.setLoggedIn(false);   
+    this.snackBar.open("Odjavili ste se", "U redu", {
+      duration: 2000,
+    });
   }
 
   public loadData() {

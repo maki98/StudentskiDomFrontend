@@ -10,6 +10,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Fakulteti } from 'src/app/models/fakulteti';
 import { FakultetiDialogComponent } from '../dialogs/fakulteti-dialog/fakulteti-dialog.component';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-fakulteti',
@@ -29,11 +31,24 @@ export class FakultetiComponent implements OnInit {
   constructor(public httpClient: HttpClient, 
         public dialog: MatDialog, 
         public snackBar: MatSnackBar, 
-        public fakultetiService: FakultetiService) {
+        public fakultetiService: FakultetiService,
+        private router: Router,
+        private Auth: AuthService) {
   }
 
   ngOnInit() {
     this.loadData();
+  }
+
+  logOut(event) {
+    const email = null;
+    const lozinka = null;
+    //if(data[0].UlogaID == )
+    this.router.navigate(['login']);
+    this.Auth.setLoggedIn(false);   
+    this.snackBar.open("Odjavili ste se", "U redu", {
+      duration: 2000,
+    });
   }
 
   public loadData() {

@@ -11,6 +11,9 @@ import { Uloge } from 'src/app/models/uloge';
 import { UlogeDialogComponent } from '../dialogs/uloge-dialog/uloge-dialog.component';
 import { UlogeService } from 'src/app/services/uloge.service';
 
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
+
 @Component({
   selector: 'app-uloge',
   templateUrl: './uloge.component.html',
@@ -29,11 +32,24 @@ export class UlogeComponent implements OnInit {
   constructor(public httpClient: HttpClient, 
         public dialog: MatDialog, 
         public snackBar: MatSnackBar, 
-        public ulogeService: UlogeService) {
+        public ulogeService: UlogeService,
+        private router: Router,
+        private Auth: AuthService) {
   }
 
   ngOnInit() {
     this.loadData();
+  }
+
+  logOut(event) {
+    const email = null;
+    const lozinka = null;
+    //if(data[0].UlogaID == )
+    this.router.navigate(['login']);
+    this.Auth.setLoggedIn(false);   
+    this.snackBar.open("Odjavili ste se", "U redu", {
+      duration: 2000,
+    });
   }
 
   public loadData() {

@@ -26,6 +26,9 @@ import { SluzbeniciService } from 'src/app/services/sluzbenici.service';
 import { Sobe } from 'src/app/models/sobe';
 import { Sluzbenici } from 'src/app/models/sluzbenici';
 
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
+
 @Component({
   selector: 'app-stanari',
   templateUrl: './stanari.component.html',
@@ -56,7 +59,9 @@ export class StanariComponent implements OnInit {
         public akademskegodineService: AkademskeGodineService,
         public domoviService: DomoviService,
         public sobeService: SobeService,
-        public sluzbeniciService: SluzbeniciService ) {
+        public sluzbeniciService: SluzbeniciService,
+        private router: Router,
+        private Auth: AuthService ) {
   }
 
   ngOnInit() {
@@ -76,6 +81,17 @@ export class StanariComponent implements OnInit {
     this.sluzbeniciService.getAllSluzbenici().subscribe(
       data => this.Sluzbenici = data
     );
+  }
+
+  logOut(event) {
+    const email = null;
+    const lozinka = null;
+    //if(data[0].UlogaID == )
+    this.router.navigate(['login']);
+    this.Auth.setLoggedIn(false);   
+    this.snackBar.open("Odjavili ste se", "U redu", {
+      duration: 2000,
+    });
   }
 
   public getBrojSobe(id):number{

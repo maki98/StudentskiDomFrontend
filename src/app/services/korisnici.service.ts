@@ -24,6 +24,16 @@ export class KorisniciService {
     return this.dataChange.asObservable();
  }
 
+   public getKorisnikByID(id): Observable<Korisnici[]> {
+    this.httpClient.get<Korisnici[]>(this.API_URL + '/' + id).subscribe(data => {
+      this.dataChange.next(data);
+    },
+    (error: HttpErrorResponse) => {
+      console.log(error.name + ' ' + error.message);
+    });
+    return this.dataChange.asObservable();
+ }
+
   public addKorisnici(korisnici: Korisnici): void {
     this.httpClient.post<any>(this.API_URL, korisnici).subscribe({
       next: data => {
