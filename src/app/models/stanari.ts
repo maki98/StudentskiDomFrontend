@@ -1,6 +1,6 @@
 export class Stanari {
-    StudentID: number;
-    GodinaID: string;
+    StudentID?: number;
+    AkademskaGodinaID?: number;
     SobaID: number;
     DomID: number;
     SluzbenikID: number;

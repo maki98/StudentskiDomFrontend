@@ -99,24 +99,24 @@ const Routes = [
     canActivate: [SluzbenikAuthGuard]
   },
   {
-    path: 'recepcionari', component: RecepcionariComponent,
-    canActivate: [SluzbenikAuthGuard]
+    path: 'recepcionari', component: RecepcionariComponent
+    //canActivate: [SluzbenikAuthGuard]
   },
   {
     path: 'gosti', component: GostiComponent,
     canActivate: [SluzbenikAuthGuard]
   },
   {
-    path: 'sluzbenici', component: SluzbeniciComponent,
-    canActivate: [SluzbenikAuthGuard]
+    path: 'sluzbenici', component: SluzbeniciComponent
+    //canActivate: [SluzbenikAuthGuard]
   },
   {
-    path: 'stanari', component: StanariComponent,
-    canActivate: [SluzbenikAuthGuard]
+    path: 'stanari', component: StanariComponent
+    //canActivate: [SluzbenikAuthGuard]
   },
   {
-    path: 'studenti', component: StudentiComponent,
-    canActivate: [SluzbenikAuthGuard]
+    path: 'studenti', component: StudentiComponent
+    //canActivate: [SluzbenikAuthGuard]
   },
   {
     path: 'sobe', component: SobeComponent,

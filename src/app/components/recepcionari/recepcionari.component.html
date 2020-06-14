@@ -18,14 +18,9 @@
         <mat-cell *matCellDef="let row" >{{row.RecepcionarID}}</mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="Ime">
-        <mat-header-cell *matHeaderCellDef>Ime</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{getMyName(row.RecepcionarID)}}</mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="Prezime">
-        <mat-header-cell *matHeaderCellDef>Prezime</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{getMySurname(row.RecepcionarID)}}</mat-cell>
+      <ng-container matColumnDef="Recepcionar">
+        <mat-header-cell *matHeaderCellDef>Recepcionar</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{getMyName(row.RecepcionarID)}} {{getMySurname(row.RecepcionarID)}}</mat-cell>
       </ng-container>
   
       <ng-container matColumnDef="Sertifikat">

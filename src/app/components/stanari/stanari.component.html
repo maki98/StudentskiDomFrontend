@@ -1,1 +1,65 @@
-<p>stanari works!</p>
+<mat-toolbar color="primary">
+    <span class="title-center">Stanari</span>
+    <span class="space">
+      <mat-icon>perm_identity</mat-icon>
+  </span>
+      <mat-icon>logout</mat-icon>
+    </mat-toolbar>
+  
+    <div class="container mat-elevation-z8">
+
+    <mat-table [dataSource]="dataSource" matSort class="mat-cell">
+
+      <ng-container matColumnDef="AkademskaGodinaID">
+        <mat-header-cell *matHeaderCellDef>Godina</mat-header-cell>
+        <mat-cell *matCellDef="let row" >{{getGodina(row.AkademskaGodinaID)}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Student">
+        <mat-header-cell *matHeaderCellDef>Student</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{getMyNameKorisnik(row.StudentID)}} {{getMySurnameKorisnik(row.StudentID)}}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="SobaID">
+        <mat-header-cell *matHeaderCellDef>Soba</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{getBrojSobe(row.SobaID)}}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="DomID">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Dom</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{getNazivDoma(row.DomID)}}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="Sluzbenik">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Sluzbenik</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{getMyNameKorisnik(row.SluzbenikID)}} {{getMySurnameKorisnik(row.SluzbenikID)}}</mat-cell>
+      </ng-container>
+  
+       <!-- actions -->
+      <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button color="primary" (click)="openDialog(1, null, null, null, null, null)">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let row; let i=index;">
+        <button mat-icon-button color="primary" (click)="openDialog(2, row.StudentID, row.AkademskaGodinaID, row.SobaID, row.DomID, row.SluzbenikID)">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" (click)="openDialog(3, row.StudentID, row.AkademskaGodinaID, row.SobaID, row.DomID, row.SluzbenikID)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row style="cursor: default" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    [showFirstLastButtons]="true" >
+    </mat-paginator>
+
+</div>

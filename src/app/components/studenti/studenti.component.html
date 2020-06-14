@@ -18,14 +18,9 @@
         <mat-cell *matCellDef="let row" >{{row.StudentID}}</mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="Ime">
-        <mat-header-cell *matHeaderCellDef>Ime</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{getMyNameKorisnik(row.StudentID)}}</mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="Prezime">
-        <mat-header-cell *matHeaderCellDef>Prezime</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{getMySurnameKorisnik(row.StudentID)}}</mat-cell>
+      <ng-container matColumnDef="Student">
+        <mat-header-cell *matHeaderCellDef>Student</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{getMyNameKorisnik(row.StudentID)}} {{getMySurnameKorisnik(row.StudentID)}}</mat-cell>
       </ng-container>
   
       <ng-container matColumnDef="FakultetID">

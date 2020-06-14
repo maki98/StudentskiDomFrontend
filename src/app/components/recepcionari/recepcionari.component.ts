@@ -27,7 +27,7 @@ export class RecepcionariComponent implements OnInit {
 
   public Korisnici: Korisnici[];
 
-  displayedColumns = ['RecepcionarID', 'Ime', 'Prezime', 'Sertifikat', 'actions'];
+  displayedColumns = ['RecepcionarID', 'Recepcionar', 'Sertifikat', 'actions'];
   dataSource: MatTableDataSource<Recepcionari>;
 
   @ViewChild(MatSort, { static: false }) sort: MatSort;

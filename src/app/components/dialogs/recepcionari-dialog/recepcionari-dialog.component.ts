@@ -26,6 +26,8 @@ export class RecepcionariDialogComponent implements OnInit {
   public flag: number;
   public submit: boolean = false;
   public selectedValue: string;
+  public Korisnici: Korisnici[];
+  public Recepcionari: Recepcionari[];
 
   public Sertifikat: Sertifikat[] = [
     {value: 'Ima', viewValue: 'Ima'},
@@ -39,6 +41,16 @@ export class RecepcionariDialogComponent implements OnInit {
               public korisniciService: KorisniciService) { }
 
   ngOnInit() {
+    this.korisniciService.getAllKorisnici().subscribe(
+      data => this.Korisnici = data
+    ),
+    this.recepcionariService.getAllRecepcionari().subscribe(
+      data => this.Recepcionari = data
+    )
+  }
+
+  filterItemsOfType(item){
+    return this.Korisnici.filter(x => x.UlogaID == item);
   }
 
   public add(): void {

@@ -6,6 +6,8 @@ import { SluzbeniciService } from '../../../services/sluzbenici.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Korisnici } from 'src/app/models/korisnici';
+import { KorisniciService } from 'src/app/services/korisnici.service';
 
 interface Funkcija {
   value: string;
@@ -24,6 +26,9 @@ export class SluzbeniciDialogComponent implements OnInit {
   public submit: boolean = false;
   public selectedValue: string;
 
+  public Korisnici: Korisnici[];
+  public Sluzbenici: Sluzbenici[];
+
   public Funkcija: Funkcija[] = [
     {value: 'Upravnik', viewValue: 'Upravnik'},
     {value: 'Zamenik', viewValue: 'Zamenik'}
@@ -32,9 +37,20 @@ export class SluzbeniciDialogComponent implements OnInit {
   constructor(public snackBar: MatSnackBar,
               public dialogRef: MatDialogRef<SluzbeniciDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Sluzbenici,
-              public sluzbeniciService: SluzbeniciService) { }
+              public sluzbeniciService: SluzbeniciService,
+              public korisniciService: KorisniciService) { }
 
   ngOnInit() {
+    this.sluzbeniciService.getAllSluzbenici().subscribe(
+      data => this.Sluzbenici = data
+    ),
+    this.korisniciService.getAllKorisnici().subscribe(
+      data => this.Korisnici = data
+    )
+  }
+
+  filterItemsOfType(item){
+    return this.Korisnici.filter(x => x.UlogaID == item);
   }
 
   public add(): void {

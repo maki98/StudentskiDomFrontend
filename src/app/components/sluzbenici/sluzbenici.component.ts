@@ -25,7 +25,7 @@ export class SluzbeniciComponent implements OnInit {
 
   public Korisnici: Korisnici[];
 
-  displayedColumns = ['SluzbenikID', 'Ime', 'Prezime', 'Funkcija', 'actions'];
+  displayedColumns = ['SluzbenikID', 'Sluzbenik', 'Funkcija', 'actions'];
   dataSource: MatTableDataSource<Sluzbenici>;
 
   @ViewChild(MatSort, { static: false }) sort: MatSort;

@@ -28,7 +28,7 @@ export class StudentiComponent implements OnInit {
   public Fakulteti: Fakulteti[];
   public Korisnici: Korisnici[];
 
-  displayedColumns = ['StudentID', 'FakultetID', 'Ime', 'Prezime', 'AdresaStalnogPrebivalistaStud', 'PolStud', 'actions'];
+  displayedColumns = ['StudentID', 'Student', 'FakultetID', 'AdresaStalnogPrebivalistaStud', 'PolStud', 'actions'];
   dataSource: MatTableDataSource<Studenti>;
 
   @ViewChild(MatSort, { static: false }) sort: MatSort;

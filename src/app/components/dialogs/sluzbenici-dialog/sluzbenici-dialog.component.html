@@ -8,8 +8,12 @@
     <form class="mat-dialog-content" #formControl="ngForm">
       <div class="form">
         <mat-form-field>
-          <input matInput placeholder="Službenik ID" [(ngModel)]="data.SluzbenikID" name="SluzbenikID"
-          [disabled] = "flag == 3" [disabled] = "flag == 2" required>
+          <mat-label>Sluzbenik</mat-label>
+          <mat-select [(ngModel)]="data.SluzbenikID" name="Sluzbenici" [disabled] = "flag == 3" required>
+            <mat-option *ngFor="let ko of filterItemsOfType(3)" [value]="ko.KorisnikID">
+              {{ko.Ime}} {{ko.Prezime}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
       <div class="form">

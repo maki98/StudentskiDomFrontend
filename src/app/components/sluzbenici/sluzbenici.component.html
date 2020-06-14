@@ -18,14 +18,9 @@
         <mat-cell *matCellDef="let row" >{{row.SluzbenikID}}</mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="Ime">
-        <mat-header-cell *matHeaderCellDef>Ime</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{getMyName(row.SluzbenikID)}}</mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="Prezime">
-        <mat-header-cell *matHeaderCellDef>Prezime</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{getMySurname(row.SluzbenikID)}}</mat-cell>
+      <ng-container matColumnDef="Sluzbenik">
+        <mat-header-cell *matHeaderCellDef>Sluzbenik</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{getMyName(row.SluzbenikID)}} {{getMySurname(row.SluzbenikID)}}</mat-cell>
       </ng-container>
   
       <ng-container matColumnDef="Funkcija">

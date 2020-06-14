@@ -7,8 +7,12 @@
     <form class="mat-dialog-content" #formControl="ngForm">
       <div class="form">
         <mat-form-field>
-          <input matInput placeholder="Recepcionar ID" [(ngModel)]="data.RecepcionarID" name="RecepcionarID"
-          [disabled] = "flag == 3" [disabled] = "flag == 2" required>
+          <mat-label>Recepcionar</mat-label>
+          <mat-select [(ngModel)]="data.RecepcionarID" name="Korisnici" [disabled] = "flag == 3" required>
+            <mat-option *ngFor="let ko of filterItemsOfType(2)" [value]="ko.KorisnikID">
+              {{ko.Ime}} {{ko.Prezime}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
       <div class="form">

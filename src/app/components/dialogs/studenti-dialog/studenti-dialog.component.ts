@@ -9,6 +9,8 @@ import { catchError } from 'rxjs/operators';
 
 import { Fakulteti } from 'src/app/models/fakulteti';
 import { FakultetiService } from 'src/app/services/fakulteti.service';
+import { KorisniciService } from 'src/app/services/korisnici.service';
+import { Korisnici } from 'src/app/models/korisnici';
 
 interface Pol {
   value: string;
@@ -32,17 +34,26 @@ export class StudentiDialogComponent implements OnInit {
     {value: 'Z', viewValue: 'Z'}
   ];
   public Fakulteti: Fakulteti[];
+  public Korisnici: Korisnici[];
 
   constructor(public snackBar: MatSnackBar,
               public dialogRef: MatDialogRef<StudentiDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Studenti,
               public studentiService: StudentiService,
-              public fakultetiService: FakultetiService) { }
+              public fakultetiService: FakultetiService,
+              public korisniciService: KorisniciService) { }
 
   ngOnInit() {
     this.fakultetiService.getAllFakulteti().subscribe(
       data => this.Fakulteti = data
+    ),
+    this.korisniciService.getAllKorisnici().subscribe(
+      data => this.Korisnici = data
     )
+  }
+
+  filterItemsOfType(item){
+    return this.Korisnici.filter(x => x.UlogaID == item);
   }
 
   public add(): void {
