@@ -38,7 +38,7 @@ export class AppComponent{
 
   isDisabledKorisnici(): boolean {
     var userRole = this.Auth.vUlogaVal;
-    if (userRole == '1' || userRole == '2' || userRole == '3' || userRole == '7') {
+    if (userRole == '7') {
       return false;
     } else {
       return true;
@@ -74,7 +74,7 @@ export class AppComponent{
 
   isDisabledStudenti(): boolean {
     var userRole = this.Auth.vUlogaVal;
-    if (userRole == '1' || userRole == '3' || userRole == '7') {
+    if (userRole == '3' || userRole == '7') {
       return false;
     } else {
       return true;

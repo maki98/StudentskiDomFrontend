@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['homeSluzbenici']);
           this.Auth.setLoggedInStatus(true);
           this.Auth.setUlogaVal(data[0].UlogaID);
+          this.Auth.setKorisnikIDVal(data[0].KorisnikID);
           console.log('ul:',this.Auth.vUlogaVal);
         }
         else

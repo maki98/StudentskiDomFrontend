@@ -14,6 +14,7 @@ export class AuthService {
 
   private loggedInStatus = false;
   private ulogaVal;
+  private korisnikIDVal;
 
   readonly API_URL = 'http://localhost:8086/api/logovanje';
 
@@ -35,6 +36,14 @@ export class AuthService {
 
   get vUlogaVal() {
     return this.ulogaVal;
+  }
+
+  setKorisnikIDVal(value) {
+     Number(this.korisnikIDVal = value);
+  }
+
+  get vKorisnikIDVal() {
+    return this.korisnikIDVal;
   }
 
   getUserDetails(email, lozinka) {

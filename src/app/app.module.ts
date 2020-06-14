@@ -63,6 +63,8 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeSluzbeniciComponent } from './components/home/home-sluzbenici/home-sluzbenici.component';
 import { AuthService } from './auth.service';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
+import { MojProfilComponent } from './components/moj-profil/moj-profil.component';
+import { MojProfilDialogComponent } from './components/dialogs/moj-profil-dialog/moj-profil-dialog.component';
 
 const Routes = [
   { 
@@ -72,6 +74,11 @@ const Routes = [
   },
   {
     path: 'login', component: LoginComponent,
+  },
+  {
+    path: 'mojprofil', 
+    component: MojProfilComponent,
+    canActivate: [AuthGuardGuard],
   },
   {
     path: 'homeSluzbenici', 
@@ -156,7 +163,9 @@ const Routes = [
     StudentiDialogComponent,
     SobeDialogComponent,
     LoginComponent,
-    HomeSluzbeniciComponent
+    HomeSluzbeniciComponent,
+    MojProfilComponent,
+    MojProfilDialogComponent
  ],
  exports: [ RouterModule ]
  ,
