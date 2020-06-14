@@ -115,4 +115,7 @@ export class StudentiComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
+  showMe(event) {
+    this.router.navigate(['mojprofil']);
+  }
 }

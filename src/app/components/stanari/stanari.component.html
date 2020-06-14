@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
     <span class="title-center">Stanari</span>
     <span class="space">
-      <mat-icon>perm_identity</mat-icon>
+      <mat-icon (click)="showMe($event)">perm_identity</mat-icon>
   </span>
   <mat-icon (click)="logOut($event)">logout</mat-icon>
     </mat-toolbar>

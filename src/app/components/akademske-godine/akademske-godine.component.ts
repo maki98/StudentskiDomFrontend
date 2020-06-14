@@ -90,4 +90,7 @@ export class AkademskeGodineComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
+  showMe(event) {
+    this.router.navigate(['mojprofil']);
+  }
 }

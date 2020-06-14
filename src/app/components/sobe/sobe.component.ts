@@ -112,4 +112,7 @@ export class SobeComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
+  showMe(event) {
+    this.router.navigate(['mojprofil']);
+  }
 }

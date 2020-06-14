@@ -103,4 +103,7 @@ export class MojProfilComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
+  showMe(event) {
+    this.router.navigate(['mojprofil']);
+  }
 }
