@@ -104,7 +104,7 @@ const Routes = [
   },
   {
     path: 'gosti', component: GostiComponent,
-    canActivate: [SluzbenikAuthGuard]
+    //canActivate: [SluzbenikAuthGuard]
   },
   {
     path: 'sluzbenici', component: SluzbeniciComponent
@@ -154,6 +154,8 @@ const Routes = [
     LoginComponent,
     HomeSluzbeniciComponent
  ],
+ exports: [ RouterModule ]
+ ,
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -1,1 +1,79 @@
-<p>gosti works!</p>
+<mat-toolbar color="primary">
+    <span class="title-center">Gosti</span>
+
+    <span class="space">
+      <mat-icon>perm_identity</mat-icon>
+  </span>
+  <mat-icon (click)="logOut($event)">logout</mat-icon>
+    </mat-toolbar>
+  
+    <div class="container mat-elevation-z8">
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pretraži po imenu i prezimenu gosta">
+    </mat-form-field>
+
+    <mat-table [dataSource]="dataSource" matSort class="mat-cell">
+
+      <ng-container matColumnDef="GostID">
+        <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+        <mat-cell *matCellDef="let row" >{{row.GostID}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Gost">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Gost</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.ImeGost}} {{row.PrezimeGost}}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="StudentID">
+        <mat-header-cell *matHeaderCellDef>Student</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{getMyNameKorisnik(row.StudentID)}} {{getMySurnameKorisnik(row.StudentID)}}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="AkademskaGodinaID">
+        <mat-header-cell *matHeaderCellDef>Godina</mat-header-cell>
+        <mat-cell *matCellDef="let row" >{{getGodina(row.AkademskaGodinaID)}}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="RecepcionarID">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Recepcionar</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{getMyNameKorisnik(row.RecepcionarID)}} {{getMySurnameKorisnik(row.RecepcionarID)}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="VremeDolaska">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>VremeDolaska</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.VremeDolaska}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="VremeOdlaska">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>VremeOdlaska</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.VremeOdlaska}}</mat-cell>
+      </ng-container>
+
+       <!-- actions -->
+      <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button color="primary" (click)="openDialog(1, null, null, null, null, null, null, null, null)">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let row; let i=index;">
+        <button mat-icon-button color="primary" (click)="openDialog(2, row.GostID, row.StudentID, row.AkademskaGodinaID, row.RecepcionarID, row.ImeGost, row.PrezimeGost, row.VremeDolaska, row.VremeDolaska)">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" (click)="openDialog(3, row.GostID, row.StudentID, row.AkademskaGodinaID, row.RecepcionarID, row.ImeGost, row.PrezimeGost, row.VremeDolaska, row.VremeDolaska)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row style="cursor: default" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    [showFirstLastButtons]="true" >
+    </mat-paginator>
+
+</div>

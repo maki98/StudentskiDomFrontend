@@ -1,1 +1,76 @@
-<p>gosti-dialog works!</p>
+<div class="container">
+  
+    <h3 mat-dialog-title *ngIf="flag == 1">Dodavanje gosta</h3>
+    <h3 mat-dialog-title *ngIf="flag == 2">Modifikacija gosta</h3>
+    <h3 mat-dialog-title *ngIf="flag == 3">Brisanje gosta</h3>
+
+    <form class="mat-dialog-content" #formControl="ngForm">
+      <div class="form">
+        <mat-form-field>
+            <mat-label>Student</mat-label>
+            <mat-select [(ngModel)]="data.StudentID" name="Korisnici" [disabled] = "flag == 3" required>
+              <mat-option *ngFor="let ko of filterItemsOfType(1)" [value]="ko.KorisnikID">
+                {{ko.Ime}} {{ko.Prezime}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field>
+            <mat-label>Akademska godina</mat-label>
+            <mat-select [(ngModel)]="data.AkademskaGodinaID" name="AkademskeGodine" [disabled] = "flag == 3" required>
+              <mat-option *ngFor="let ag of AkademskeGodine" [value]="ag.AkademskaGodinaID">
+                {{ag.Godina}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field>
+            <mat-label>Recepcionar</mat-label>
+            <mat-select [(ngModel)]="data.RecepcionarID" name="Korisnici" [disabled] = "flag == 3" required>
+              <mat-option *ngFor="let ko of filterItemsOfType(2)" [value]="ko.KorisnikID">
+                {{ko.Ime}} {{ko.Prezime}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field >
+          <input matInput placeholder="ImeGost" [(ngModel)]="data.ImeGost"
+          name="ImeGost" [disabled] = "flag == 3" required>
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field >
+          <input matInput placeholder="PrezimeGost" [(ngModel)]="data.PrezimeGost"
+          name="PrezimeGost" [disabled] = "flag == 3" required>
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field >
+          <input matInput placeholder="VremeDolaska" [(ngModel)]="data.VremeDolaska"
+          name="VremeDolaska" [disabled] = "flag == 3" required>
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field >
+          <input matInput placeholder="VremeOdlaska" [(ngModel)]="data.VremeOdlaska"
+          name="VremeOdlaska" [disabled] = "flag == 3" required>
+        </mat-form-field>
+      </div>
+      
+  
+      <div mat-dialog-actions>
+        <button mat-button *ngIf="flag == 1" [type]="submit" [mat-dialog-close]="1"
+          (click)="add()" [disabled]="!formControl.valid">Sačuvaj</button>
+        <button mat-button *ngIf="flag == 2" [type]="submit" [mat-dialog-close]="1"
+          (click)="update()" [disabled]="!formControl.valid">Sačuvaj</button>
+        <button mat-button *ngIf="flag == 3" [type]="submit" [mat-dialog-close]="1"
+          (click)="delete()">Obriši</button>
+          
+        <button mat-button (click)="cancel()">Poništi</button>
+
+      </div>
+    </form>
+  </div>

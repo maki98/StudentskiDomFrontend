@@ -5,3 +5,59 @@
 </span>
     <mat-icon value="logout">logout</mat-icon>
 </mat-toolbar>
+
+<mat-sidenav-container class="example-container">
+
+    <mat-sidenav mode="over" [fixedInViewport]="true" opened mode="side">
+      
+      <mat-accordion>
+  
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+              MENI
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-button [routerLink]="['/korisnici']">Korisnici</a>
+          </mat-nav-list>
+          <mat-nav-list>
+            <a mat-button [routerLink]="['/uloge']">Uloge</a>
+          </mat-nav-list>
+          <mat-nav-list>
+            <a mat-button [routerLink]="['/gosti']">Gosti</a>
+          </mat-nav-list>
+          <mat-nav-list>
+            <a mat-button [routerLink]="['/sluzbenici']">Sluzbenici</a>
+          </mat-nav-list>
+          <mat-nav-list>
+            <a mat-button [routerLink]="['/sobe']">Sobe</a>
+          </mat-nav-list>
+          <mat-nav-list>
+            <a mat-button [routerLink]="['/stanari']">Stanari</a>
+          </mat-nav-list>
+          <mat-nav-list>
+            <a mat-button [routerLink]="['/studenti']">Studenti</a>
+          </mat-nav-list>
+          <mat-nav-list>
+            <a mat-button [routerLink]="['/recepcionari']">Recepcionari</a>
+          </mat-nav-list>
+          <mat-nav-list>
+            <a mat-button [routerLink]="['/domovi']">Domovi</a>
+          </mat-nav-list>
+          <mat-nav-list>
+            <a mat-button [routerLink]="['/akademskegodine']">Akademske godine</a>
+          </mat-nav-list>
+          <mat-nav-list>
+            <a mat-button [routerLink]="['/fakulteti']">Fakulteti</a>
+          </mat-nav-list>
+          <mat-nav-list>
+            <a mat-button [routerLink]="['/tipovisobe']">Tipovi sobe</a>
+          </mat-nav-list>
+  
+        </mat-expansion-panel>
+    </mat-accordion>
+  
+    </mat-sidenav>
+    <router-outlet></router-outlet>
+  </mat-sidenav-container>

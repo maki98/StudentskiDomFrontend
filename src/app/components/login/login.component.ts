@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { HomeSluzbeniciComponent } from '../home/home-sluzbenici/home-sluzbenici.component';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   homeSluzbenici: HomeSluzbeniciComponent;
 
-  ngOnInit(): void {
+
+  ngOnInit(): void { 
   }
 
   loginUser(event) {
